@@ -4,7 +4,8 @@ import CombinedFlight from "./CombinedFlight";
 
 function DashboardComponent({ oneWay, returnWay }) {
   return (
-    <div>
+    <div id="list">
+      {/* <Flight /> */}
       {oneWay.direct && (
         <div>
           Direct Flights:

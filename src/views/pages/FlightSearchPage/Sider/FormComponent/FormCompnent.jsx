@@ -2,6 +2,7 @@ import React from "react";
 import AutoSuggestInput from "../../../../common/AutoSuggestInput";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import calendar from "../../../../../icons/calendar.png";
 const cities = [
   { name: "Pune (PNQ)" },
   { name: "Mumbai (BOM)" },
@@ -45,21 +46,23 @@ function FormComponent({
           list={cities}
         />
       </div>
-      <div className="form-item">
+      <div className="form-item date-picker">
         <DatePicker
           selected={startDate}
           onChange={date => onChange("startDate", date)}
           dateFormat="yyyy/MM/dd"
         />
+        <img src={calendar} alt="" />
       </div>
 
-      <div className="form-item">
+      <div className="form-item date-picker">
         <DatePicker
           selected={returnDate}
           onChange={date => onChange("returnDate", date)}
           dateFormat="yyyy/MM/dd"
           disabled={!isReturn}
         />
+        <img src={calendar} alt="" />
       </div>
 
       <div className="form-item">

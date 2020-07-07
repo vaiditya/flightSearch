@@ -5,7 +5,7 @@ function AutoSuggestInput({ id, value, placeholder, formItemOnChange, list }) {
   const [suggestions, setSuggestions] = useState([]);
   //Pass changes to calling component
   const onChange = (e, { newValue }) => {
-    formItemOnChange(e.target.id, newValue);
+    formItemOnChange(e.target.id ? e.target.id : id, newValue);
   };
   //Input props to autosuggest
   const inputProps = {

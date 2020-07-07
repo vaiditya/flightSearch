@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import DashboardComponent from "./DashBoardComponent";
 import { getGreaterThen30Flights } from "./formatData";
+import "./list.scss";
 
 function Dashboard({ oneWayResult, returnWayResult }) {
   if (oneWayResult.indirect) {
