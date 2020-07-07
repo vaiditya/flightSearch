@@ -1,7 +1,7 @@
 import { calcDifference } from "../../../../utils";
 export default (origin, destination, date, storeData) => {
+  let totalFlights = 0;
   const data = storeData.filter(flight => flight.date === date);
-  console.log("=====", data);
   const directFlights = data
     .filter(
       journey =>
@@ -14,6 +14,8 @@ export default (origin, destination, date, storeData) => {
         diff
       };
     });
+
+  totalFlights += directFlights.length;
 
   console.log("=========", directFlights);
 
@@ -48,7 +50,6 @@ export default (origin, destination, date, storeData) => {
       }
     }
   }
-
   console.log("=========", indirectFlights);
-  return { direct: directFlights, indirect: indirectFlights };
+  return { direct: directFlights, indirect: indirectFlights, totalFlights };
 };

@@ -18,11 +18,27 @@ function Sider({
       returnDate
       // numberOfPassengers
     } = fields;
-    console.log(fields, data);
 
-    setOnewayResult(computeResults(origin, destination, startDate, data));
+    const oneWayResults = computeResults(origin, destination, startDate, data);
+    setOnewayResult({
+      ...oneWayResults,
+      origin,
+      destination,
+      date: startDate
+    });
     if (type === "return") {
-      setReturnWayResult(computeResults(destination, origin, startDate, data));
+      const returnWayResults = computeResults(
+        destination,
+        origin,
+        returnDate,
+        data
+      );
+      setReturnWayResult({
+        ...returnWayResults,
+        origin,
+        destination,
+        date: returnDate
+      });
     }
   };
   return <FormComponent getSearchResults={getSearchResults} />;

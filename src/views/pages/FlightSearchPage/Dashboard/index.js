@@ -7,6 +7,7 @@ import "./list.scss";
 function Dashboard({ oneWayResult, returnWayResult }) {
   if (oneWayResult.indirect) {
     oneWayResult.indirect = getGreaterThen30Flights(oneWayResult.indirect);
+    oneWayResult.totalFlights += oneWayResult.indirect.length;
   }
   return (
     <DashboardComponent oneWay={oneWayResult} returnWay={returnWayResult} />

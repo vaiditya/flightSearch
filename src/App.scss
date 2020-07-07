@@ -1,11 +1,13 @@
-button {
-  cursor: pointer;
-  border: none;
-  &:focus {
-    outline: none;
+body {
+  button {
+    cursor: pointer;
+    border: none;
+    &:focus {
+      outline: none;
+    }
   }
-}
 
-input {
-  padding: 0 10px;
+  input {
+    padding: 0 10px;
+  }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import calendar from "../../../../../icons/calendar.png";
+import rupee from "../../../../../icons/rupee.png";
 
 function Flight({
   details,
@@ -25,7 +26,7 @@ function Flight({
         showDetails
           ? `hide-bottom ${isLast ? "last-item" : "margin-bottom-none"}`
           : ""
-      }
+      } ${name !== "Multiple" && showDetails ? "splitted-item" : ""}
      `}
     >
       <div className="item-wrapper">
@@ -66,9 +67,22 @@ function Flight({
           <label className="small">{destination.split("(")[0]}</label>
         </div>
       </div>
-      <div className="item-wrapper">{arrivalTime}</div>
-      <div className="item-wrapper">{diff}</div>
-      <div className="item-wrapper">{price}</div>
+      <div className="item-wrapper">
+        <div>
+          <label className={`${isMergedItem ? "color-green" : ""}`}>
+            {diff}
+          </label>
+          <label className="small">
+            {isMergedItem ? "Total Duration" : !showDetails && "Non stop"}
+          </label>
+        </div>
+      </div>
+      <div className="item-wrapper">
+        <label className="color-red">
+          <img src={rupee} alt="Rs." />
+          {isMergedItem ? price : !showDetails && price}
+        </label>
+      </div>
       <div className="item-wrapper">
         <button className="btn">Book</button>
       </div>

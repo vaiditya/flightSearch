@@ -11,13 +11,20 @@ import flightOperations from "../../../store/operations";
 function FlightSearchPage() {
   const [oneWayResult, setOnewayResult] = useState({
     direct: [],
-    indirect: []
+    indirect: [],
+    origin: "",
+    destination: "",
+    date: "",
+    totalFlights: 0
   });
   const [returnWayResult, setReturnWayResult] = useState({
     direct: [],
-    indirect: []
+    indirect: [],
+    origin: "",
+    destination: "",
+    date: "",
+    totalFlights: 0
   });
-
   const dispatch = useDispatch();
   const state = useSelector(state => state.flights);
   console.log("state", state);

@@ -3,7 +3,8 @@
   .sider {
     width: 285px;
     border: 1px solid;
-    height: 100vh;
+    height: calc(100vh - 52px);
+    border-top: none;
     .side-content {
       margin: 20px 10px;
       .form-container {
