@@ -31,21 +31,21 @@ function FlightSearchPage() {
     <div>
       <Header />
       <div className="container">
-        {loaded && !loading ? (
-          <>
-            <Sider
-              data={state.data}
-              setOnewayResult={setOnewayResult}
-              setReturnWayResult={setReturnWayResult}
-            />
-            <Dashboard
-              oneWayResult={oneWayResult}
-              returnWayResult={returnWayResult}
-            />
-          </>
-        ) : (
+        {/* {loaded && !loading ? ( */}
+        <>
+          <Sider
+            data={state.data}
+            setOnewayResult={setOnewayResult}
+            setReturnWayResult={setReturnWayResult}
+          />
+          <Dashboard
+            oneWayResult={oneWayResult}
+            returnWayResult={returnWayResult}
+          />
+        </>
+        {/* ) : (
           <BeatLoader />
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -7,24 +7,28 @@ function CombinedFlight({ combinedDetails }) {
 
   return (
     <div>
-      <button onClick={() => setShow(!show)}>{!show ? "Show" : "Hide"}</button>
-      {!show ? (
+      <Flight
+        details={{
+          name: "Multiple",
+          departureTime: first.departureTime,
+          arrivalTime: second.arrivalTime,
+          price: first.price + second.price,
+          diff: totalTime,
+          origin: first.origin,
+          destination: second.destination
+        }}
+        showDetails={show}
+        toggleVisibilty={setShow}
+        isMergedItem={true}
+      />
+
+      {show && (
         <>
-          Flight:
-          <Flight
-            details={{
-              name: "Multiple",
-              departureTime: first.departureTime,
-              arrivalTime: second.arrivalTime,
-              price: first.price + second.price,
-              diff: totalTime
-            }}
-          />
-        </>
-      ) : (
-        <>
-          <Flight details={first} /> Layoff:{layoffTime}
-          <Flight details={second} />
+          <Flight details={first} showDetails={show} />
+          <div className="layover-wrapper">
+            <label>Layover time {layoffTime}</label>
+          </div>
+          <Flight details={second} showDetails={show} isLast={true} />
         </>
       )}
     </div>

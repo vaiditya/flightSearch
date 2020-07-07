@@ -8,7 +8,6 @@ function DashboardComponent({ oneWay, returnWay }) {
       {/* <Flight /> */}
       {oneWay.direct && (
         <div>
-          Direct Flights:
           {oneWay.direct.map((flight, index) => (
             <div key={`key-${index}`}>
               <Flight details={flight} />
@@ -18,7 +17,6 @@ function DashboardComponent({ oneWay, returnWay }) {
       )}
       {oneWay.indirect && (
         <div>
-          Indirect Flights:
           {oneWay.indirect.map((flight, index) => (
             <div key={`key-${index}`}>
               <CombinedFlight combinedDetails={flight} />
