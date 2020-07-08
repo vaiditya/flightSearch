@@ -10,20 +10,34 @@ import flightOperations from "../../../store/operations";
 
 function FlightSearchPage() {
   const [oneWayResult, setOnewayResult] = useState({
-    direct: [],
-    indirect: [],
+    original: {
+      direct: [],
+      indirect: []
+    },
+    filtered: {
+      direct: [],
+      indirect: []
+    },
     origin: "",
     destination: "",
     date: "",
-    totalFlights: 0
+    totalFlights: 0,
+    numberOfPassengers: 1
   });
   const [returnWayResult, setReturnWayResult] = useState({
-    direct: [],
-    indirect: [],
+    original: {
+      direct: [],
+      indirect: []
+    },
+    filtered: {
+      direct: [],
+      indirect: []
+    },
     origin: "",
     destination: "",
     date: "",
-    totalFlights: 0
+    totalFlights: 0,
+    numberOfPassengers: 1
   });
   const dispatch = useDispatch();
   const state = useSelector(state => state.flights);
@@ -32,7 +46,6 @@ function FlightSearchPage() {
   useEffect(() => {
     dispatch(flightOperations.getInitialData());
   }, [dispatch]);
-
   const { loading, loaded } = state;
   return (
     <div>
@@ -42,6 +55,8 @@ function FlightSearchPage() {
         <>
           <Sider
             data={state.data}
+            oneWayResult={oneWayResult}
+            returnWayResult={returnWayResult}
             setOnewayResult={setOnewayResult}
             setReturnWayResult={setReturnWayResult}
           />

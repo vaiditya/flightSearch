@@ -9,6 +9,7 @@ const cities = [
   { name: "Bengaluru (BLR)" },
   { name: "Delhi (DEL)" }
 ];
+const passengersList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function FormComponent({
   formItems,
   setFormItems,
@@ -64,9 +65,22 @@ function FormComponent({
         />
         <img src={calendar} alt="" />
       </div>
+      <div className="form-item drop-down">
+        <select
+          name="count"
+          id="numberOfPassengers"
+          onChange={e => onChange(e.target.id, Number(e.target.value))}
+        >
+          {passengersList.map((number, index) => (
+            <option key={`id-${index}`} value={number}>
+              {number}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className="form-item">
-        <button className="btn submit" onClick={getSearchResults}>
+        <button className="btn submit nav-btn" onClick={getSearchResults}>
           Search
         </button>
       </div>

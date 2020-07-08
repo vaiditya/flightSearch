@@ -10,34 +10,41 @@ function DashboardComponent({ oneWay, returnWay }) {
 
       <div
         className={`list-view ${
-          returnWay.direct.length > 0 || returnWay.indirect.length > 0
+          returnWay.filtered.direct.length > 0 ||
+          returnWay.filtered.indirect.length > 0
             ? "half-width"
             : ""
         }`}
       >
         <DetailsPreview payload={oneWay} />
         <div className="result-list">
-          {oneWay.direct && (
+          {oneWay.filtered.direct && (
             <div>
-              {oneWay.direct.map((flight, index) => (
+              {oneWay.filtered.direct.map((flight, index) => (
                 <div key={`key-${index}`}>
-                  <Flight details={flight} />
+                  <Flight
+                    details={flight}
+                    numberOfPassengers={oneWay.numberOfPassengers}
+                  />
                 </div>
               ))}
             </div>
           )}
-          {oneWay.indirect && (
+          {oneWay.filtered.indirect && (
             <div>
-              {oneWay.indirect.map((flight, index) => (
+              {oneWay.filtered.indirect.map((flight, index) => (
                 <div key={`key-${index}`}>
-                  <CombinedFlight combinedDetails={flight} />
+                  <CombinedFlight
+                    combinedDetails={flight}
+                    numberOfPassengers={oneWay.numberOfPassengers}
+                  />
                 </div>
               ))}
             </div>
           )}
-          {oneWay.indirect && (
+          {oneWay.filtered.indirect && (
             <div>
-              {oneWay.indirect.map((flight, index) => (
+              {oneWay.filtered.indirect.map((flight, index) => (
                 <div key={`key-${index}`}>
                   <CombinedFlight combinedDetails={flight} />
                 </div>
@@ -47,7 +54,8 @@ function DashboardComponent({ oneWay, returnWay }) {
         </div>
       </div>
       {/* ======================== */}
-      {(returnWay.direct.length > 0 || returnWay.indirect.length > 0) && (
+      {(returnWay.filtered.direct.length > 0 ||
+        returnWay.filtered.indirect.length > 0) && (
         <div className="list-view half-width">
           <DetailsPreview payload={returnWay} />
           <div className="result-list">
@@ -55,16 +63,22 @@ function DashboardComponent({ oneWay, returnWay }) {
               <div>
                 {returnWay.direct.map((flight, index) => (
                   <div key={`key-${index}`}>
-                    <Flight details={flight} />
+                    <Flight
+                      details={flight}
+                      numberOfPassengers={returnWay.numberOfPassengers}
+                    />
                   </div>
                 ))}
               </div>
             )}
-            {returnWay.indirect && (
+            {returnWay.filtered.indirect && (
               <div>
-                {returnWay.indirect.map((flight, index) => (
+                {returnWay.filtered.indirect.map((flight, index) => (
                   <div key={`key-${index}`}>
-                    <CombinedFlight combinedDetails={flight} />
+                    <CombinedFlight
+                      combinedDetails={flight}
+                      numberOfPassengers={returnWay.numberOfPassengers}
+                    />
                   </div>
                 ))}
               </div>

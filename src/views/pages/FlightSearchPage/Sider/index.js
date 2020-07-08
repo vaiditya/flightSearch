@@ -1,30 +1,33 @@
 import React from "react";
 import FormComponent from "./FormComponent";
-import { useDispatch, useSelector } from "react-redux";
-import computeResults from "./computeResults";
+import { computeResults, rangeFilter } from "./utils";
+import RangePicker from "./RangePicker";
 
 function Sider({
   data,
-  oneWayResult,
   setOnewayResult,
-  returnWayResult,
-  setReturnWayResult
+  setReturnWayResult,
+  oneWayResult,
+  returnWayResult
 }) {
   const getSearchResults = (fields, type) => {
     const {
       origin,
       destination,
       startDate,
-      returnDate
-      // numberOfPassengers
+      returnDate,
+      numberOfPassengers
     } = fields;
 
     const oneWayResults = computeResults(origin, destination, startDate, data);
     setOnewayResult({
-      ...oneWayResults,
+      original: { ...oneWayResults },
+      filtered: { ...oneWayResults },
+      totalFlights: oneWayResults.totalFlights,
       origin,
       destination,
-      date: startDate
+      date: startDate,
+      numberOfPassengers
     });
     if (type === "return") {
       const returnWayResults = computeResults(
@@ -34,14 +37,41 @@ function Sider({
         data
       );
       setReturnWayResult({
-        ...returnWayResults,
+        original: { ...returnWayResults },
+        filtered: { ...returnWayResults },
+        totalFlights: returnWayResults.totalFlights,
         origin,
         destination,
-        date: returnDate
+        date: returnDate,
+        numberOfPassengers
       });
     }
   };
-  return <FormComponent getSearchResults={getSearchResults} />;
+
+  const onRangeChange = range => {
+    const oneWayFilteredFlights = rangeFilter(range, oneWayResult.original);
+    console.log("here", oneWayFilteredFlights);
+    setOnewayResult({
+      ...oneWayResult,
+      filtered: { ...oneWayFilteredFlights },
+      totalFlights: oneWayFilteredFlights.totalFlights
+    });
+    const returnWayFilteredFlights = rangeFilter(
+      range,
+      returnWayResult.original
+    );
+    setReturnWayResult({
+      ...returnWayResult,
+      filtered: { ...returnWayFilteredFlights },
+      totalFlights: returnWayFilteredFlights.totalFlights
+    });
+  };
+  return (
+    <div className="sider">
+      <FormComponent getSearchResults={getSearchResults} />
+      <RangePicker onRangeChange={onRangeChange} />
+    </div>
+  );
 }
 
 export default Sider;

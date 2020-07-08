@@ -7,7 +7,8 @@ function Flight({
   showDetails,
   toggleVisibilty,
   isLast,
-  isMergedItem
+  isMergedItem,
+  numberOfPassengers
 }) {
   const {
     arrivalTime,
@@ -20,6 +21,8 @@ function Flight({
     origin,
     destination
   } = details;
+
+  const totalPrice = price * (numberOfPassengers || 1);
   return (
     <div
       className={`item-container ${
@@ -80,7 +83,7 @@ function Flight({
       <div className="item-wrapper">
         <label className="color-red">
           <img src={rupee} alt="Rs." />
-          {isMergedItem ? price : !showDetails && price}
+          {isMergedItem ? totalPrice : !showDetails && totalPrice}
         </label>
       </div>
       <div className="item-wrapper">

@@ -3,7 +3,6 @@ import calendar from "../../../../../icons/calendar.png";
 
 function TitleBar({ payload }) {
   const { origin, destination, date, totalFlights } = payload;
-  console.log(date);
   return (
     <div id="title">
       <img src={calendar} alt="" />

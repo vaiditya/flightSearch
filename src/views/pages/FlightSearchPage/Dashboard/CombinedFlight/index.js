@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Flight from "../Flight";
 
-function CombinedFlight({ combinedDetails }) {
+function CombinedFlight({ combinedDetails, numberOfPassengers }) {
   const [show, setShow] = useState(false);
   const { first, second, totalTime, layoffTime } = combinedDetails;
 
@@ -17,6 +17,7 @@ function CombinedFlight({ combinedDetails }) {
           origin: first.origin,
           destination: second.destination
         }}
+        numberOfPassengers={numberOfPassengers}
         showDetails={show}
         toggleVisibilty={setShow}
         isMergedItem={true}

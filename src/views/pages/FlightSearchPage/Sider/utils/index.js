@@ -1,5 +1,5 @@
-import { calcDifference } from "../../../../utils";
-export default (origin, destination, date, storeData) => {
+import { calcDifference } from "../../../../../utils";
+export const computeResults = (origin, destination, date, storeData) => {
   let totalFlights = 0;
   const data = storeData.filter(flight => flight.date === date);
   const directFlights = data
@@ -52,4 +52,24 @@ export default (origin, destination, date, storeData) => {
   }
   console.log("=========", indirectFlights);
   return { direct: directFlights, indirect: indirectFlights, totalFlights };
+};
+
+export const rangeFilter = (range, flights) => {
+  const { direct, indirect } = flights;
+  const filteredDirectFlights = direct.filter(flight => flight.price < range);
+  const totalFlights = filteredDirectFlights.length;
+  const filteredIndirectFlights = indirect.filter(
+    flight => flight.first.price + flight.second.price < range
+  );
+  console.log(
+    "filteredDirectFlights",
+    filteredDirectFlights,
+    "filteredIndirectFlights",
+    filteredIndirectFlights
+  );
+  return {
+    direct: filteredDirectFlights,
+    indirect: filteredIndirectFlights,
+    totalFlights
+  };
 };
