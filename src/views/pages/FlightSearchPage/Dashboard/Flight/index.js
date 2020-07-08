@@ -1,5 +1,6 @@
 import React from "react";
-import calendar from "../../../../../icons/calendar.png";
+import singleJourney from "../../../../../icons/singleJourney.png";
+import multiple from "../../../../../icons/multiple.png";
 import rupee from "../../../../../icons/rupee.png";
 
 function Flight({
@@ -34,7 +35,7 @@ function Flight({
     >
       <div className="first-container">
         <div className="item-wrapper">
-          <img src={calendar} alt="" />
+          <img src={isMergedItem ? multiple : singleJourney} alt="" />
         </div>
         <div className="item-wrapper">
           <div>
@@ -92,9 +93,11 @@ function Flight({
             {isMergedItem ? totalPrice : !showDetails && totalPrice}
           </label>
         </div>
-        <div className="item-wrapper">
-          <button className="btn">Book</button>
-        </div>
+        {(isMergedItem || !showDetails) && (
+          <div className="item-wrapper">
+            <button className="btn">Book</button>
+          </div>
+        )}
       </div>
     </div>
   );

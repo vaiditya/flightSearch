@@ -19,3 +19,31 @@ export const calcDifference = (startStr, endStr) => {
   let diff = end - start;
   return `${parseInt(diff / 60)}h ${diff % 60}m`;
 };
+
+export const strToDate = dateObj => {
+  if (dateObj) {
+    console.log(dateObj);
+
+    const date = dateObj.getDate();
+    const monthMap = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    const weekMap = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const day = weekMap[dateObj.getDay()];
+    const month = monthMap[dateObj.getMonth() + 1];
+    console.log(day, month, date);
+    return `  ${day}, ${date} ${month}`;
+  }
+  return "";
+};

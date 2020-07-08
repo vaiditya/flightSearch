@@ -10,10 +10,23 @@ function SearchForm({ getSearchResults }) {
     returnDate: new Date(),
     numberOfPassengers: 1
   });
+  const [error, setError] = useState({ status: false, errMsg: "" });
   const [journeyType, setJourneyType] = useState("one-way");
 
   const getResults = () => {
-    getSearchResults(payloadFormatter(formItems), journeyType);
+    const { origin, destination } = formItems;
+    if (origin && destination && origin !== destination) {
+      error.status &&
+        setError({
+          status: false
+        });
+      getSearchResults(payloadFormatter(formItems), journeyType);
+    } else {
+      setError({
+        status: true,
+        errMsg: "Source or Destination error"
+      });
+    }
   };
 
   const handleJourneyType = type => {
@@ -41,6 +54,7 @@ function SearchForm({ getSearchResults }) {
         setFormItems={setFormItems}
         getSearchResults={getResults}
         isReturn={journeyType === "return"}
+        error={error}
       />
     </div>
   );

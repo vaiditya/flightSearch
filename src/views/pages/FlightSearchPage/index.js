@@ -39,6 +39,7 @@ function FlightSearchPage() {
     totalFlights: 0,
     numberOfPassengers: 1
   });
+  const [loader, setLoader] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector(state => state.flights);
   console.log("state", state);
@@ -46,12 +47,19 @@ function FlightSearchPage() {
   useEffect(() => {
     dispatch(flightOperations.getInitialData());
   }, [dispatch]);
+
+  const startLoader = () => {
+    setLoader(true);
+    setTimeout(() => {
+      setLoader(false);
+    }, 2000);
+  };
   const { loading, loaded } = state;
   return (
     <div>
       <Header />
-      <div className="container">
-        {loaded && !loading ? (
+      {loaded && !loading ? (
+        <div className="container">
           <>
             <Sider
               data={state.data}
@@ -59,18 +67,20 @@ function FlightSearchPage() {
               returnWayResult={returnWayResult}
               setOnewayResult={setOnewayResult}
               setReturnWayResult={setReturnWayResult}
+              startLoader={startLoader}
             />
             <Dashboard
               oneWayResult={oneWayResult}
               returnWayResult={returnWayResult}
+              loader={loader}
             />
           </>
-        ) : (
-          <div className="loader">
-            <BeatLoader />
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="loader">
+          <BeatLoader />
+        </div>
+      )}
     </div>
   );
 }

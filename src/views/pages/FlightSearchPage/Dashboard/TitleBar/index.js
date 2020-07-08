@@ -1,23 +1,36 @@
 import React from "react";
-import calendar from "../../../../../icons/calendar.png";
+import onewayPlane from "../../../../../icons/onewayPlane.png";
+import returnPlane from "../../../../../icons/returnPlane.png";
+import { strToDate } from "../../../../../utils";
 
 function TitleBar({ payload, isIndirect }) {
-  const { origin, destination, date, totalFlights } = payload;
+  const {
+    origin,
+    destination,
+    date,
+    totalFlights,
+    startDateObj,
+    returnDateObj
+  } = payload;
+
   return (
     <div id="title">
-      <img src={calendar} alt="" />
+      <img src={returnDateObj ? returnPlane : onewayPlane} alt="" />
       <div className="content">
         <div>
           <div>
             <label>
               {!isIndirect
-                ? `${origin} to ${destination}`
+                ? `${origin ? origin : "--"} to ${
+                    destination ? destination : "--"
+                  }`
                 : `${destination} to ${origin}`}
             </label>
           </div>
           <div>
             <label className="small">
-              {totalFlights} flights found {date}
+              {totalFlights} flights found {"\u00A0"}
+              {strToDate(startDateObj || returnDateObj)}
             </label>
           </div>
         </div>

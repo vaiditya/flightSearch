@@ -14,7 +14,8 @@ function FormComponent({
   formItems,
   setFormItems,
   getSearchResults,
-  isReturn
+  isReturn,
+  error
 }) {
   const {
     origin,
@@ -78,7 +79,7 @@ function FormComponent({
           ))}
         </select>
       </div>
-
+      {error.status && <div className="error">{error.errMsg}</div>}
       <div className="form-item">
         <button className="btn submit nav-btn" onClick={getSearchResults}>
           Search

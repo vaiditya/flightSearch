@@ -13,14 +13,14 @@ function RangePicker({ onRangeChange }) {
       <input
         type="range"
         min={0}
-        max={30000}
+        max={50000}
         step={1000}
         value={range}
         onChange={rangeChanged}
       />
       <div className="limit-container">
         <label className="min-label">0</label>
-        <label className="max-label">30000</label>
+        <label className="max-label">50000</label>
       </div>
     </div>
   );

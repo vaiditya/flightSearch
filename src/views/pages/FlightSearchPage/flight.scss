@@ -119,11 +119,12 @@
   font-size: 14px;
   border: 1px solid;
   margin: 10px;
+
   .value-container {
     margin-top: 10px;
   }
   .limit-container {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     @media screen and (max-width: 576px) {

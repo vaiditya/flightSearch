@@ -54,12 +54,14 @@ export const computeResults = (origin, destination, date, storeData) => {
   return { direct: directFlights, indirect: indirectFlights, totalFlights };
 };
 
-export const rangeFilter = (range, flights) => {
+export const rangeFilter = (range, flights, count) => {
   const { direct, indirect } = flights;
-  const filteredDirectFlights = direct.filter(flight => flight.price < range);
+  const filteredDirectFlights = direct.filter(
+    flight => flight.price * count < range
+  );
   const totalFlights = filteredDirectFlights.length;
   const filteredIndirectFlights = indirect.filter(
-    flight => flight.first.price + flight.second.price < range
+    flight => (flight.first.price + flight.second.price) * count < range
   );
   console.log(
     "filteredDirectFlights",

@@ -4,7 +4,7 @@ import DashboardComponent from "./DashBoardComponent";
 import { getGreaterThen30Flights } from "./formatData";
 import "./list.scss";
 
-function Dashboard({ oneWayResult, returnWayResult }) {
+function Dashboard({ oneWayResult, returnWayResult, loader }) {
   console.log("========", oneWayResult);
   if (oneWayResult.filtered.indirect) {
     oneWayResult.filtered.indirect = getGreaterThen30Flights(
@@ -19,7 +19,11 @@ function Dashboard({ oneWayResult, returnWayResult }) {
     returnWayResult.totalFlights += returnWayResult.filtered.indirect.length;
   }
   return (
-    <DashboardComponent oneWay={oneWayResult} returnWay={returnWayResult} />
+    <DashboardComponent
+      oneWay={oneWayResult}
+      returnWay={returnWayResult}
+      loader={loader}
+    />
   );
 }
 

@@ -8,7 +8,8 @@ function Sider({
   setOnewayResult,
   setReturnWayResult,
   oneWayResult,
-  returnWayResult
+  returnWayResult,
+  startLoader
 }) {
   const getSearchResults = (fields, type) => {
     const {
@@ -16,7 +17,9 @@ function Sider({
       destination,
       startDate,
       returnDate,
-      numberOfPassengers
+      numberOfPassengers,
+      startDateObj,
+      returnDateObj
     } = fields;
     setOnewayResult({
       original: {
@@ -28,6 +31,7 @@ function Sider({
         indirect: []
       }
     });
+    startLoader();
     const oneWayResults = computeResults(origin, destination, startDate, data);
     setOnewayResult({
       original: { ...oneWayResults },
@@ -36,7 +40,8 @@ function Sider({
       origin,
       destination,
       date: startDate,
-      numberOfPassengers
+      numberOfPassengers,
+      startDateObj
     });
     if (type === "return") {
       const returnWayResults = computeResults(
@@ -52,13 +57,18 @@ function Sider({
         origin,
         destination,
         date: returnDate,
-        numberOfPassengers
+        numberOfPassengers,
+        returnDateObj
       });
     }
   };
 
   const onRangeChange = range => {
-    const oneWayFilteredFlights = rangeFilter(range, oneWayResult.original);
+    const oneWayFilteredFlights = rangeFilter(
+      range,
+      oneWayResult.original,
+      oneWayResult.numberOfPassengers
+    );
     console.log("here", oneWayFilteredFlights);
     setOnewayResult({
       ...oneWayResult,
@@ -67,7 +77,8 @@ function Sider({
     });
     const returnWayFilteredFlights = rangeFilter(
       range,
-      returnWayResult.original
+      returnWayResult.original,
+      returnWayResult.numberOfPassengers
     );
     setReturnWayResult({
       ...returnWayResult,
