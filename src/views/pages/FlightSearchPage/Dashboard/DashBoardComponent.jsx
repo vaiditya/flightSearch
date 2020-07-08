@@ -5,7 +5,7 @@ import DetailsPreview from "./TitleBar";
 
 function DashboardComponent({ oneWay, returnWay }) {
   return (
-    <div id="list">
+    <div id="list" className="md-screen">
       {/* <Flight /> */}
 
       <div
@@ -16,7 +16,7 @@ function DashboardComponent({ oneWay, returnWay }) {
             : ""
         }`}
       >
-        <DetailsPreview payload={oneWay} />
+        <DetailsPreview payload={oneWay} isIndirect={false} />
         <div className="result-list">
           {oneWay.filtered.direct && (
             <div>
@@ -42,22 +42,12 @@ function DashboardComponent({ oneWay, returnWay }) {
               ))}
             </div>
           )}
-          {oneWay.filtered.indirect && (
-            <div>
-              {oneWay.filtered.indirect.map((flight, index) => (
-                <div key={`key-${index}`}>
-                  <CombinedFlight combinedDetails={flight} />
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </div>
-      {/* ======================== */}
       {(returnWay.filtered.direct.length > 0 ||
         returnWay.filtered.indirect.length > 0) && (
         <div className="list-view half-width">
-          <DetailsPreview payload={returnWay} />
+          <DetailsPreview payload={returnWay} isIndirect={true} />
           <div className="result-list">
             {returnWay.direct && (
               <div>

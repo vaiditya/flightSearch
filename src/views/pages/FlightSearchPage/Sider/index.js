@@ -18,7 +18,16 @@ function Sider({
       returnDate,
       numberOfPassengers
     } = fields;
-
+    setOnewayResult({
+      original: {
+        direct: [],
+        indirect: []
+      },
+      filtered: {
+        direct: [],
+        indirect: []
+      }
+    });
     const oneWayResults = computeResults(origin, destination, startDate, data);
     setOnewayResult({
       original: { ...oneWayResults },

@@ -1,7 +1,7 @@
 import React from "react";
 import calendar from "../../../../../icons/calendar.png";
 
-function TitleBar({ payload }) {
+function TitleBar({ payload, isIndirect }) {
   const { origin, destination, date, totalFlights } = payload;
   return (
     <div id="title">
@@ -10,7 +10,9 @@ function TitleBar({ payload }) {
         <div>
           <div>
             <label>
-              {origin} to {destination}
+              {!isIndirect
+                ? `${origin} to ${destination}`
+                : `${destination} to ${origin}`}
             </label>
           </div>
           <div>

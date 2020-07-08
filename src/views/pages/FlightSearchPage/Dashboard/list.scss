@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  position: fixed;
+  background: #f9f9f9;
   width: 100%;
   .content {
     margin-left: 75px;
@@ -30,20 +30,35 @@
 
   .list-view {
     width: 100%;
-    .result-list {
-      margin-top: 80px;
-      height: 490px;
-      overflow-y: auto;
-    }
+
     .item-container {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       align-items: center;
       height: 100px;
       border: 1px solid;
       margin: 0 10px 10px;
+      .first-container {
+        display: flex;
+        justify-content: space-evenly;
+        width: 60%;
+        @media screen and (max-width: 768px) {
+          display: flex;
+          width: 100%;
+          padding-top: 10px;
+        }
+      }
+      .second-container {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        @media screen and (max-width: 768px) {
+          display: flex;
+          width: 100%;
+        }
+      }
       .item-wrapper {
-        width: 15%;
+        // width: 15%;
         height: 60px;
         display: flex;
         justify-content: center;
@@ -85,6 +100,15 @@
         width: 75px;
         border-radius: 7px;
       }
+      @media screen and (max-width: 768px) {
+        display: block;
+        height: 125px;
+      }
+    }
+    .result-list {
+      @media screen and (max-width: 996px) {
+        height: 100%;
+      }
     }
     .splitted-item {
       background: #f1f1f1;
@@ -121,5 +145,11 @@
   }
   .half-width {
     width: 50%;
+    @media screen and (max-width: 996px) {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 996px) {
+    display: block;
   }
 }
