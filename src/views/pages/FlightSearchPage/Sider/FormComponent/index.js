@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FormComponent from "./FormCompnent";
 import { payloadFormatter } from "./formatPayload";
+import Proptypes from "prop-types";
 
 /**
  * Component for rendering form fields
@@ -75,5 +76,8 @@ function SearchForm({ getSearchResults }) {
     </div>
   );
 }
+SearchForm.propTypes = {
+  getSearchResults: Proptypes.func
+};
 
 export default SearchForm;

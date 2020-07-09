@@ -2,6 +2,7 @@ import React from "react";
 import FormComponent from "./FormComponent";
 import { computeResults, rangeFilter } from "./utils";
 import RangePicker from "./RangePicker";
+import Proptypes from "prop-types";
 
 /**
  * Component for rendering Search Form
@@ -147,5 +148,14 @@ function Sider({
     </div>
   );
 }
+
+Sider.propTypes = {
+  data: Proptypes.object,
+  setOnewayResult: Proptypes.func,
+  setReturnWayResult: Proptypes.func,
+  oneWayResult: Proptypes.object,
+  returnWayResult: Proptypes.object,
+  startLoader: Proptypes.bool
+};
 
 export default Sider;

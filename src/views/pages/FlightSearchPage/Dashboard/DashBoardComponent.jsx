@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from "prop-types";
 import Flight from "./Flight";
 import CombinedFlight from "./CombinedFlight";
 import DetailsPreview from "./TitleBar";
@@ -90,5 +91,11 @@ function DashboardComponent({ oneWay, returnWay, loader }) {
     </div>
   );
 }
+
+DashboardComponent.propTypes = {
+  oneWay: Proptypes.object,
+  returnWay: Proptypes.object,
+  loader: Proptypes.bool
+};
 
 export default DashboardComponent;

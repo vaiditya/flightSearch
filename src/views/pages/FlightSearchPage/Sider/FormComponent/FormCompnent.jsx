@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from "prop-types";
 import AutoSuggestInput from "views/common/AutoSuggestInput";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -81,5 +82,13 @@ function FormComponent({
     </div>
   );
 }
+
+FormComponent.propTypes = {
+  formItems: Proptypes.object,
+  setFormItems: Proptypes.func,
+  getSearchResults: Proptypes.func,
+  isReturn: Proptypes.bool,
+  error: Proptypes.object
+};
 
 export default React.memo(FormComponent);

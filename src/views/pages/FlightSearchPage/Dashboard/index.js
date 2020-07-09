@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from "prop-types";
 import DashboardComponent from "./DashBoardComponent";
 import { getGreaterThen30Flights } from "./formatData";
 import "./dashboard.scss";
@@ -35,5 +36,11 @@ function Dashboard({ oneWayResult, returnWayResult, loader }) {
     />
   );
 }
+
+Dashboard.propTypes = {
+  oneWayResult: Proptypes.func,
+  returnWayResult: Proptypes.func,
+  loader: Proptypes.bool
+};
 
 export default Dashboard;

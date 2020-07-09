@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Proptypes from "prop-types";
 
 /**
  * Component for range slider
@@ -37,5 +38,9 @@ function RangePicker({ onRangeChange }) {
     </div>
   );
 }
+
+RangePicker.propTypes = {
+  onRangeChange: Proptypes.func
+};
 
 export default RangePicker;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Proptypes from "prop-types";
 import Flight from "../Flight";
 
 /**
@@ -39,5 +40,9 @@ function CombinedFlight({ combinedDetails, numberOfPassengers }) {
     </div>
   );
 }
+CombinedFlight.propTypes = {
+  combinedDetails: Proptypes.object,
+  numberOfPassengers: Proptypes.number
+};
 
 export default CombinedFlight;

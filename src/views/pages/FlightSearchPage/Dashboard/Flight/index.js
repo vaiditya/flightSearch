@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from "prop-types";
 import singleJourney from "icons/singleJourney.png";
 import multiple from "icons/multiple.png";
 import rupee from "icons/rupee.png";
@@ -106,5 +107,14 @@ function Flight({
     </div>
   );
 }
+
+Flight.propTypes = {
+  details: Proptypes.object,
+  showDetails: Proptypes.func,
+  toggleVisibilty: Proptypes.func,
+  isLast: Proptypes.bool,
+  isMergedItem: Proptypes.bool,
+  numberOfPassengers: Proptypes.number
+};
 
 export default React.memo(Flight);
