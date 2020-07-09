@@ -1,3 +1,4 @@
+import { monthMap, weekMap } from "config";
 export const dateToString = date => {
   const mm = date.getMonth() + 1; // getMonth() is zero-based
   const dd = date.getDate();
@@ -23,21 +24,6 @@ export const calcDifference = (startStr, endStr) => {
 export const strToDate = dateObj => {
   if (dateObj) {
     const date = dateObj.getDate();
-    const monthMap = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-    const weekMap = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const day = weekMap[dateObj.getDay()];
     const month = monthMap[dateObj.getMonth() + 1];
     return `  ${day}, ${date} ${month}`;

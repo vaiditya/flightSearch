@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Flight from "../Flight";
 
+/**
+ * Component to render muultiple flight details
+ * @param {Object} props
+ */
 function CombinedFlight({ combinedDetails, numberOfPassengers }) {
   const [show, setShow] = useState(false);
   const { first, second, totalTime, layoffTime } = combinedDetails;
@@ -26,7 +30,7 @@ function CombinedFlight({ combinedDetails, numberOfPassengers }) {
       {show && (
         <>
           <Flight details={first} showDetails={show} />
-          <div className="layover-wrapper">
+          <div className="layover-wrapper d-flex justify-content-center">
             <label>Layover time {layoffTime}</label>
           </div>
           <Flight details={second} showDetails={show} isLast={true} />

@@ -2,16 +2,12 @@
   height: 70px;
   border-bottom: 1px solid black;
   position: relative;
-  display: flex;
-  align-items: center;
   margin-bottom: 10px;
   background: #f9f9f9;
   width: 100%;
 
   .content {
     margin-left: 75px;
-    display: flex;
-    align-items: center;
     .small {
       font-size: 14px;
       color: gray;
@@ -27,21 +23,14 @@
 
 #list {
   width: 100%;
-  display: flex;
-  justify-content: center;
   .list-view {
     width: 100%;
 
     .item-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       height: 100px;
       border: 1px solid;
       margin: 0 10px 10px;
       .first-container {
-        display: flex;
-        justify-content: space-around;
         width: 57%;
         @media screen and (max-width: 768px) {
           display: flex;
@@ -50,8 +39,6 @@
         }
       }
       .second-container {
-        display: flex;
-        justify-content: space-around;
         width: 43%;
         @media screen and (max-width: 768px) {
           display: flex;
@@ -59,11 +46,7 @@
         }
       }
       .item-wrapper {
-        // width: 15%;
         height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         img {
           width: 55px;
         }
@@ -133,8 +116,7 @@
     }
     .layover-wrapper {
       position: relative;
-      display: flex;
-      justify-content: center;
+
       label {
         padding: 0 15px;
         z-index: 9;

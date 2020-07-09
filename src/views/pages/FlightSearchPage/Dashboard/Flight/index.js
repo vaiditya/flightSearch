@@ -3,6 +3,10 @@ import singleJourney from "icons/singleJourney.png";
 import multiple from "icons/multiple.png";
 import rupee from "icons/rupee.png";
 
+/**
+ * Component to render single flight details
+ * @param {Object} props
+ */
 function Flight({
   details,
   showDetails,
@@ -25,18 +29,19 @@ function Flight({
   const totalPrice = price * (numberOfPassengers || 1);
   return (
     <div
-      className={`item-container ${
+      className={`item-container d-flex justify-content-space-between align-items-center 
+      ${
         showDetails
           ? `hide-bottom ${isLast ? "last-item" : "margin-bottom-none"}`
           : ""
       } ${name !== "Multiple" && showDetails ? "splitted-item" : ""}
      `}
     >
-      <div className="first-container">
-        <div className="item-wrapper">
+      <div className="first-container d-flex justify-content-space-around">
+        <div className="item-wrapper d-flex justify-content-center align-items-center">
           <img src={isMergedItem ? multiple : singleJourney} alt="" />
         </div>
-        <div className="item-wrapper">
+        <div className="item-wrapper d-flex justify-content-center align-items-center">
           <div>
             <label>{name}</label>
             {!isMergedItem ? (
@@ -62,21 +67,21 @@ function Flight({
             )}
           </div>
         </div>
-        <div className="item-wrapper">
+        <div className="item-wrapper d-flex justify-content-center align-items-center">
           <div>
             <label>{departureTime}</label>
             <label className="small">{origin.split("(")[0]}</label>
           </div>
         </div>
-        <div className="item-wrapper">
+        <div className="item-wrapper d-flex justify-content-center align-items-center">
           <div>
             <label>{arrivalTime}</label>
             <label className="small">{destination.split("(")[0]}</label>
           </div>
         </div>
       </div>
-      <div className="second-container">
-        <div className="item-wrapper">
+      <div className="second-container d-flex justify-content-space-around">
+        <div className="item-wrapper d-flex justify-content-center align-items-center">
           <div>
             <label className={`${isMergedItem ? "color-green" : ""}`}>
               {diff}
@@ -86,14 +91,14 @@ function Flight({
             </label>
           </div>
         </div>
-        <div className="item-wrapper">
+        <div className="item-wrapper d-flex justify-content-center align-items-center">
           <label className="color-red">
             <img src={rupee} alt="Rs." />
             {isMergedItem ? totalPrice : !showDetails && totalPrice}
           </label>
         </div>
         {(isMergedItem || !showDetails) && (
-          <div className="item-wrapper">
+          <div className="item-wrapper d-flex justify-content-center align-items-center">
             <button className="btn">Book</button>
           </div>
         )}
@@ -102,4 +107,4 @@ function Flight({
   );
 }
 
-export default Flight;
+export default React.memo(Flight);

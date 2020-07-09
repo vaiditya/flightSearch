@@ -2,13 +2,24 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Sider from "./Sider";
 import Dashboard from "./Dashboard";
-import "./flight.scss";
+import "./flightPage.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import BeatLoader from "react-spinners/BeatLoader";
 import flightOperations from "store/operations";
 
+/**
+ * Component for page view
+ *
+ */
 function FlightSearchPage() {
+  /**
+   * Initating state variables
+   * keys (One way flights):
+   *
+   * original : store results based on search parameters
+   * rest are search parameters
+   */
   const [oneWayResult, setOnewayResult] = useState({
     original: {
       direct: [],
@@ -41,12 +52,22 @@ function FlightSearchPage() {
   });
   const [loader, setLoader] = useState(false);
   const dispatch = useDispatch();
+
+  /**
+   * Listen to data stored in redux store
+   */
   const state = useSelector(state => state.flights);
 
+  /*
+   *   Get initial payload on loading of page
+   */
   useEffect(() => {
     dispatch(flightOperations.getInitialData());
   }, [dispatch]);
 
+  /**
+   * Loading state while fetching results on search parameters
+   */
   const startLoader = () => {
     setLoader(true);
     setTimeout(() => {
@@ -76,7 +97,7 @@ function FlightSearchPage() {
           </>
         </div>
       ) : (
-        <div className="loader">
+        <div className="loader d-flex justify-content-center align-items-center">
           <BeatLoader />
         </div>
       )}

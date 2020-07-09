@@ -4,9 +4,13 @@ import CombinedFlight from "./CombinedFlight";
 import DetailsPreview from "./TitleBar";
 import BeatLoader from "react-spinners/BeatLoader";
 
+/**
+ * Component for containing results to be rendered
+ * @param {Object} props
+ */
 function DashboardComponent({ oneWay, returnWay, loader }) {
   return (
-    <div id="list">
+    <div id="list" className="d-flex justify-content-center">
       {!loader ? (
         <>
           <div
@@ -79,7 +83,7 @@ function DashboardComponent({ oneWay, returnWay, loader }) {
           )}
         </>
       ) : (
-        <div className="loader">
+        <div className="loader d-flex align-items-center justify-content-center">
           <BeatLoader />
         </div>
       )}

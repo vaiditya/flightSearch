@@ -3,13 +3,12 @@ import AutoSuggestInput from "views/common/AutoSuggestInput";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import calendar from "icons/calendar.png";
-const cities = [
-  { name: "Pune (PNQ)" },
-  { name: "Mumbai (BOM)" },
-  { name: "Bengaluru (BLR)" },
-  { name: "Delhi (DEL)" }
-];
-const passengersList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+import { cities, passengersList } from "config";
+
+/**
+ * Memoized component for form render
+ * @param {Object} props
+ */
 function FormComponent({
   formItems,
   setFormItems,
@@ -17,13 +16,7 @@ function FormComponent({
   isReturn,
   error
 }) {
-  const {
-    origin,
-    destination,
-    startDate,
-    returnDate
-    // numberOfPassengers
-  } = formItems;
+  const { origin, destination, startDate, returnDate } = formItems;
   const onChange = (key, value) => {
     setFormItems({ ...formItems, [key]: value });
   };
@@ -89,4 +82,4 @@ function FormComponent({
   );
 }
 
-export default FormComponent;
+export default React.memo(FormComponent);

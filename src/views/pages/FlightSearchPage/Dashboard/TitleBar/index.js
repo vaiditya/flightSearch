@@ -3,6 +3,10 @@ import onewayPlane from "icons/onewayPlane.png";
 import returnPlane from "icons/returnPlane.png";
 import { strToDate } from "utils";
 
+/**
+ * Componrnt to render result title
+ * @param {Object} { payload, isIndirect }
+ */
 function TitleBar({ payload, isIndirect }) {
   const {
     origin,
@@ -13,9 +17,9 @@ function TitleBar({ payload, isIndirect }) {
   } = payload;
 
   return (
-    <div id="title">
+    <div id="title" className="d-flex align-items-center">
       <img src={returnDateObj ? returnPlane : onewayPlane} alt="" />
-      <div className="content">
+      <div className="content d-flex align-items-center">
         <div>
           <div>
             <label>

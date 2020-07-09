@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import FormComponent from "./FormCompnent";
 import { payloadFormatter } from "./formatPayload";
 
+/**
+ * Component for rendering form fields
+ * @param {Object} props : callback for get search results
+ */
 function SearchForm({ getSearchResults }) {
   const [formItems, setFormItems] = useState({
     origin: "",
@@ -13,8 +17,16 @@ function SearchForm({ getSearchResults }) {
   const [error, setError] = useState({ status: false, errMsg: "" });
   const [journeyType, setJourneyType] = useState("one-way");
 
+  /**
+   * Call-back for validation of form fields
+   * and submit fields if all validations are passed
+   */
   const getResults = () => {
     const { origin, destination } = formItems;
+
+    /*
+     * Validations
+     */
     if (origin && destination && origin !== destination) {
       error.status &&
         setError({
@@ -29,6 +41,10 @@ function SearchForm({ getSearchResults }) {
     }
   };
 
+  /**
+   * Call-back for toggling between oneway / return journey
+   * @param {String} type : one-way / return
+   */
   const handleJourneyType = type => {
     setJourneyType(type);
   };

@@ -7,7 +7,10 @@ import rootReducer from "./store";
 import "./App.scss";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
+/**
+ * Component initiating React App
+ *
+ */
 function App() {
   return (
     <div className="App">
