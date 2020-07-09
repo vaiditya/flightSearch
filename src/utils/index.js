@@ -22,8 +22,6 @@ export const calcDifference = (startStr, endStr) => {
 
 export const strToDate = dateObj => {
   if (dateObj) {
-    console.log(dateObj);
-
     const date = dateObj.getDate();
     const monthMap = [
       "January",
@@ -42,7 +40,6 @@ export const strToDate = dateObj => {
     const weekMap = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const day = weekMap[dateObj.getDay()];
     const month = monthMap[dateObj.getMonth() + 1];
-    console.log(day, month, date);
     return `  ${day}, ${date} ${month}`;
   }
   return "";

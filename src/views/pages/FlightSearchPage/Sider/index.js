@@ -69,7 +69,6 @@ function Sider({
       oneWayResult.original,
       oneWayResult.numberOfPassengers
     );
-    console.log("here", oneWayFilteredFlights);
     setOnewayResult({
       ...oneWayResult,
       filtered: { ...oneWayFilteredFlights },

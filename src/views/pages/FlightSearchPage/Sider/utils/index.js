@@ -1,4 +1,4 @@
-import { calcDifference } from "../../../../../utils";
+import { calcDifference } from "utils";
 export const computeResults = (origin, destination, date, storeData) => {
   let totalFlights = 0;
   const data = storeData.filter(flight => flight.date === date);
@@ -16,8 +16,6 @@ export const computeResults = (origin, destination, date, storeData) => {
     });
 
   totalFlights += directFlights.length;
-
-  console.log("=========", directFlights);
 
   const fromOrigin = data.filter(journey => journey.origin === origin);
   const toDestination = data.filter(
@@ -50,7 +48,6 @@ export const computeResults = (origin, destination, date, storeData) => {
       }
     }
   }
-  console.log("=========", indirectFlights);
   return { direct: directFlights, indirect: indirectFlights, totalFlights };
 };
 
@@ -62,12 +59,6 @@ export const rangeFilter = (range, flights, count) => {
   const totalFlights = filteredDirectFlights.length;
   const filteredIndirectFlights = indirect.filter(
     flight => (flight.first.price + flight.second.price) * count < range
-  );
-  console.log(
-    "filteredDirectFlights",
-    filteredDirectFlights,
-    "filteredIndirectFlights",
-    filteredIndirectFlights
   );
   return {
     direct: filteredDirectFlights,

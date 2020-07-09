@@ -1,10 +1,5 @@
-import {
-  GETTING_RESULTS,
-  SET_RESULTS,
-  GET_RESULTS_ERROR,
-  COMPUTE_RESULTS
-} from "./types";
-import API from "../api";
+import { GETTING_RESULTS, SET_RESULTS, GET_RESULTS_ERROR } from "./types";
+import API from "api";
 export const getInitialData = () => {
   return dispatch => {
     dispatch(gettingInitialData());
@@ -21,5 +16,3 @@ export const getInitialDataError = payload => ({
   type: GET_RESULTS_ERROR,
   payload
 });
-
-export const computeResults = payload => ({ type: COMPUTE_RESULTS, payload });

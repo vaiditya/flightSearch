@@ -1,8 +1,8 @@
 import React from "react";
-import AutoSuggestInput from "../../../../common/AutoSuggestInput";
+import AutoSuggestInput from "views/common/AutoSuggestInput";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import calendar from "../../../../../icons/calendar.png";
+import calendar from "icons/calendar.png";
 const cities = [
   { name: "Pune (PNQ)" },
   { name: "Mumbai (BOM)" },

@@ -1,4 +1,4 @@
-import { calcDifference } from "../../../../utils";
+import { calcDifference } from "utils";
 export const getGreaterThen30Flights = data => {
   let validFlights = [];
 

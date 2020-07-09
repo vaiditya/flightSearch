@@ -1,7 +1,7 @@
 import React from "react";
-import singleJourney from "../../../../../icons/singleJourney.png";
-import multiple from "../../../../../icons/multiple.png";
-import rupee from "../../../../../icons/rupee.png";
+import singleJourney from "icons/singleJourney.png";
+import multiple from "icons/multiple.png";
+import rupee from "icons/rupee.png";
 
 function Flight({
   details,
@@ -13,7 +13,6 @@ function Flight({
 }) {
   const {
     arrivalTime,
-    date,
     departureTime,
     flightNo,
     name,
@@ -45,19 +44,19 @@ function Flight({
             ) : (
               <>
                 {showDetails ? (
-                  <a
+                  <label
                     className="small link"
                     onClick={() => toggleVisibilty(false)}
                   >
                     hide details
-                  </a>
+                  </label>
                 ) : (
-                  <a
+                  <label
                     className="small link"
                     onClick={() => toggleVisibilty(true)}
                   >
                     show details
-                  </a>
+                  </label>
                 )}
               </>
             )}

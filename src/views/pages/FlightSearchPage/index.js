@@ -6,7 +6,7 @@ import "./flight.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import BeatLoader from "react-spinners/BeatLoader";
-import flightOperations from "../../../store/operations";
+import flightOperations from "store/operations";
 
 function FlightSearchPage() {
   const [oneWayResult, setOnewayResult] = useState({
@@ -42,7 +42,6 @@ function FlightSearchPage() {
   const [loader, setLoader] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector(state => state.flights);
-  console.log("state", state);
 
   useEffect(() => {
     dispatch(flightOperations.getInitialData());

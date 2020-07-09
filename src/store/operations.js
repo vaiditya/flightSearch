@@ -1,3 +1,3 @@
-import { getInitialData, computeResults } from "./actions";
+import { getInitialData } from "./actions";
 
-export default { getInitialData, computeResults };
+export default { getInitialData };

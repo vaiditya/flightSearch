@@ -1,11 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import DashboardComponent from "./DashBoardComponent";
 import { getGreaterThen30Flights } from "./formatData";
 import "./list.scss";
 
 function Dashboard({ oneWayResult, returnWayResult, loader }) {
-  console.log("========", oneWayResult);
   if (oneWayResult.filtered.indirect) {
     oneWayResult.filtered.indirect = getGreaterThen30Flights(
       oneWayResult.filtered.indirect

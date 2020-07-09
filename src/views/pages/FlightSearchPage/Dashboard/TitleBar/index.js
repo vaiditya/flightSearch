@@ -1,13 +1,12 @@
 import React from "react";
-import onewayPlane from "../../../../../icons/onewayPlane.png";
-import returnPlane from "../../../../../icons/returnPlane.png";
-import { strToDate } from "../../../../../utils";
+import onewayPlane from "icons/onewayPlane.png";
+import returnPlane from "icons/returnPlane.png";
+import { strToDate } from "utils";
 
 function TitleBar({ payload, isIndirect }) {
   const {
     origin,
     destination,
-    date,
     totalFlights,
     startDateObj,
     returnDateObj

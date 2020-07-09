@@ -1,4 +1,4 @@
-import { dateToString } from "../../../../../utils";
+import { dateToString } from "utils";
 export const payloadFormatter = formData => {
   const result = { ...formData };
   const { startDate, returnDate } = formData;
