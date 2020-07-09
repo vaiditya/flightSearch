@@ -1,9 +1,9 @@
 ## Flight Search App
 
-Flight searching app for oneway and return journey of flights.
-Features:
-1.Provision of adding number of passengers.
-2.Filter according to price setting in the range selector
+Flight searching app for oneway and return journey of flights.<br/>
+Features:<br/>
+1.Provision of adding number of passengers.<br/>
+2.Filter according to price setting in the range selector<br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
