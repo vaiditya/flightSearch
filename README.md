@@ -1,4 +1,4 @@
-##Flight Search App
+## Flight Search App
 
 Flight searching app for oneway and return journey of flights.
 Features:
